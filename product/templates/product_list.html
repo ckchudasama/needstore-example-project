@@ -1,0 +1,67 @@
+<!-- products/templates/products/product_list.html -->
+{% load static %}
+{% load embed_video_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+    <style type="text/css">
+      .main{     
+        border:2px solid black;
+        margin-top:20px;
+        border-radius:10px;
+      }     
+      #h1{
+        font-weight:50px;
+        text-align: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        color:white;
+        background-color:black;
+        border:2px solid black;
+        width:300px;
+        margin:auto;
+        border-radius:50px;
+      }
+      #h1:hover{
+        color:black;
+        background-color:aqua;
+      }     
+     .images{
+        float: left;        
+
+      }
+      #image{
+        width:250px;
+        height:200px;
+      }
+     .video{
+      margin-left:250px;      
+     }
+    </style>
+</head>
+<body>
+    <h1 id="h1">Product List</h1>
+    <div class="main">
+        {% for product in products %}
+          <div class="images">          
+            <img src="{% static 'medhoharvati.jpg' %}" alt="medhoharvati" id="image">           
+          </div>
+          <div>
+            <h2>{{product.name}}</h2>            
+          </div>
+          <div>
+            <h2>&#x20B9;
+             {{product.price}}</h2>           
+          </div>
+          <div>
+            <h4>{{product.description}}</h4>
+          </div>
+          <div class="video">
+            {% video product.youtube_video_url '500x250' %}            
+          </div>
+          <br>
+        {% endfor %}
+    </div>    
+</body>
+</html>
+
